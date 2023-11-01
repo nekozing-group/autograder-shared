@@ -1,0 +1,58 @@
+# input: array of tuples
+# output: array of integers
+[[testcases]]
+input = [["union", 1, 2], ["union", 3, 4], ["is_same", 2, 3], ["union", 2, 3], ["is_same", 4, 1]]
+expected_output = [false, true]
+
+[[testcases]]
+input = [["union", 1, 5], ["union", 2, 3], ["is_same", 3, 1], ["is_same", 5, 2], ["union", 3, 5], ["is_same", 5, 2]]
+expected_output = [false, false, true]
+
+[[testcases]]
+input = [["union", 1, 2], ["union", 2, 3], ["union", 3, 4], ["is_same", 4, 1], ["union", 4, 5], ["is_same", 5, 4], ["is_same", 1, 5]]
+expected_output = [true, true, true]
+
+[[testcases]]
+input = [["is_same", 1, 2], ["union", 1, 2]]
+expected_output = [false, true]
+
+[[testcases]]
+input = [["is_same", 1, 1]]
+expected_output = [true]
+
+[metadata]
+entrypoint = 'solution'
+user_template = '''
+from typing import List
+
+def solution(input: List[int]) -> List[int]:
+    pass
+'''
+problem_description = '''
+## Problem Description
+Union-Find, also known as Disjoint Set, is a data structure that keeps track of a partition of a set into disjoint subsets. It provides two primary operations:
+
+1. Union: Join two subsets into a single subset.
+2. Find: Determine which subset a particular element is in. This operation returns an identifier for the subset.
+
+The goal of the find operation is to support an "is_same" operation to check if two elements belong to the same set.
+
+## Task:
+Implement a function called 'solution' backed by the Union-Find structure, which
+    * Supports a union operation to combine the subsets of two given elements.
+    * Supports an is_same operation to ascertain if two elements are in the same subset.
+
+You'll be provided an ordered sequence of operations to perform on the Union-Find structure. The output should only consist of the results from the is_same operations.
+
+## Example:
+```
+input = [["union", 1, 2], ["union", 3, 4], ["is_same", 2, 3], ["union", 2, 3], ["is_same", 4, 1]]
+expected_output = [False, True]
+```
+'''
+reference_implementation = '''
+from typing import List
+
+def solution(input: List[int]) -> List[int]:
+    pass
+'''

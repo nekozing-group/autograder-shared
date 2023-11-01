@@ -1,0 +1,30 @@
+[[testcases]]
+input = []
+expected_output = []
+
+[metadata]
+entrypoint = ''
+
+user_template = '''
+from typing import List
+
+def solution(input: List[int]) -> List[int]:
+    pass
+'''
+
+problem_description = '''
+## Problem Description
+## Task
+## Examples
+```
+input =
+expected_output = 
+```
+'''
+
+reference_implementation = '''
+from typing import List
+
+def solution(input: List[int]) -> List[int]:
+    pass
+'''
