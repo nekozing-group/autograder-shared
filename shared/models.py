@@ -48,4 +48,5 @@ class GradeCodeError(BaseModel):
 class GradeCodeResult(BaseModel):
     session_id: str
     error: Optional[GradeCodeError] = None
+    llm_guidance: Optional[str] = None
     test_results: Optional[TestRunnerResult] = None
