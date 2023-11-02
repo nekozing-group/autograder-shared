@@ -3,7 +3,7 @@ input = []
 expected_output = []
 
 [metadata]
-entrypoint = ''
+entrypoint = 'solution'
 
 user_template = '''
 from typing import List
@@ -26,5 +26,5 @@ reference_implementation = '''
 from typing import List
 
 def solution(input: List[int]) -> List[int]:
-    pass
+    return []
 '''

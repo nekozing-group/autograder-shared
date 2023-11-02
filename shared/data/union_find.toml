@@ -13,7 +13,7 @@ input = [["union", 1, 2], ["union", 2, 3], ["union", 3, 4], ["is_same", 4, 1], [
 expected_output = [true, true, true]
 
 [[testcases]]
-input = [["is_same", 1, 2], ["union", 1, 2]]
+input = [["is_same", 1, 2], ["union", 1, 2], ["is_same", 1, 2]]
 expected_output = [false, true]
 
 [[testcases]]
@@ -53,6 +53,32 @@ expected_output = [False, True]
 reference_implementation = '''
 from typing import List
 
+class UnionFind:
+    def __init__(self):
+        self.d = {}
+
+    def union(self, a, b):
+        self.d[self.find(a)] = self.find(b)
+    
+    def find(self, a):
+        b = self.d.get(a, a)
+        if b != a:
+            b = self.find(b)
+        self.d[a] = b
+        return b
+
+    def is_same(self, a, b):
+        return self.find(a) == self.find(b)
+
 def solution(input: List[int]) -> List[int]:
-    pass
+    global UnionFind
+    result = []
+    union_find = UnionFind()
+    for action, a, b in input:
+        if action == 'union':
+            union_find.union(a, b)
+        elif action == 'is_same':
+            result.append(union_find.is_same(a, b))
+    
+    return result
 '''
