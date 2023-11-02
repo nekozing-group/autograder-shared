@@ -1,5 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Any, List, Optional
+from enum import Enum
 
 # data object for python test execution
 class SingleTestRunResult(BaseModel):
@@ -9,6 +10,17 @@ class SingleTestRunResult(BaseModel):
     actual_output: Any
     expected_output: Any
 
+class TestRunnerState(str, Enum):
+    UNKNOWN = 'UNKNOWN'
+    INIT = 'INIT'
+    LOAD = 'LOAD'
+    COMPILE = 'COMPILE'
+    BYTE_CODE = 'BYTE_CODE'
+    READY = 'READY'
+    RUN_TESTS = 'RUN_TESTS'
+    LOAD_TESTCASE = 'LOAD_TESTCASE'
+    COMPLETE = 'COMPLETE'
+
 class TestRunnerResult(BaseModel):
     session_id: str
     test_outputs: List[SingleTestRunResult]
@@ -17,8 +29,10 @@ class TestRunnerResult(BaseModel):
 
 # data class between autograder and testrunner
 class JobError(BaseModel):
+    model_config = ConfigDict(use_enum_values=True)
     error_type: str
     message: str
+    testrunner_state: TestRunnerState
 
 class JobResult(BaseModel):
     session_id: str
